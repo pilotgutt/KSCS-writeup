@@ -116,5 +116,10 @@ Weird Sound
 <br><br>Vi fant da flagget på slutten av lydfilen og zoomet inn for å se det tydligere.<br><br>
 <img width="857" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/fdb8aa4d-4f5f-49de-8bf4-09b5eeb6429e">
 
+<br><br>KCSC{TONE_DEAF_TUNES}<br>
+
+Discord Flaggsørviss
+-------------------
+<img width="795" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/ad762b55-8815-4aa0-a5aa-e09c670c1d10">
 
 

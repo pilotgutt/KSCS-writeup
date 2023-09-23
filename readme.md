@@ -72,6 +72,49 @@ Vi lastet ned `Keepass 2`, valgte `secret.kdbx` - og skrev inn passordet `unpred
 ![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/9144d986-d1fa-4842-9b42-a570eb01ae18)
 <br><br><i>KCSC{P4ssword_manag3r_crack3r}</i><br>
 
+Hugin
+-----
+
+<img width="795" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1d791f99-93cb-4a0b-8e58-8448b4c5d436">
+
+<br>Vi lastet ned dump.zip og unzippet med 7zip.<br>
+Da fant vi filen `dump.txt`<br><br>
+
+<img width="738" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/3157c100-3a34-475f-a969-c072d735c219">
+
+<br><br>Her er det mange alfanumeriske verdier i et mønster - og vi tenkte at informasjonen kunne være `base64` encoded.<br>
+Da prøvde vi å bruke `CyberChef` (https://gchq.github.io/CyberChef/) for å konverte til et leselig format:<br><br>
+
+<img width="1098" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/e2a19a9a-3080-4a7c-a8fa-a524c28cdd96">
+
+<br><br>Her ser vi at vi får ut en type kode med koordinat-informasjon.<br>
+Etter et kjapt søk på nett, så finner vi ut at koden er et GeoJSON objekt.<br>
+Vi ønsket å visualisere denne koden for å få det på et kart, siden oppgaven sier at flagget er på slutten av "pathen" tegnet på kartet.<br>
+Vi fant et verktøy på nett som heter `geojson` (https://geojson.io/) og inputet koden:<br><br>
+
+<img width="1371" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/4975ac0a-e807-4a27-a321-606557614825">
+<br><br>
+<img width="923" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/49037f20-235c-4a9d-8512-13298b331e77">
+<br><br>
+
+<i>KCSC{geojsoniscool}</i><br>
+
+Weird Sound
+-----------
+
+<img width="798" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/dfbccb6b-ae7d-496e-80fd-84d673d83f66">
+
+<br><br>Vi laster ned `whatsthatsound.zip` og unzipper slik at vi finner filen `whatsthatsound.wav`
+<br>Når vi spilte av lydfilen, så var det bare vanlige VHF coms på radio og deretter noen rare lyder på slutten.
+<br>Vi tenkte umiddelbart at det kunne være lurt å analysere lyden med programmet `Audacity`<br><br>
+
+<img width="938" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/bfb6bffd-e861-4b50-a2dd-447d4466eb94">
+
+<br><br>Vi testet med å se på lydfilen som Spektrogram.<br><br>
+
+<img width="339" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/ebb28dd9-51a8-42d3-9c3c-30296e29fbb3">
+<br><br>Vi fant da flagget på slutten av lydfilen og zoomet inn for å se det tydligere.<br><br>
+<img width="857" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/fdb8aa4d-4f5f-49de-8bf4-09b5eeb6429e">
 
 
 

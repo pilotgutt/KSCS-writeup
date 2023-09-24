@@ -122,4 +122,76 @@ Discord Flaggsørviss
 -------------------
 <img width="795" alt="image" src="https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/ad762b55-8815-4aa0-a5aa-e09c670c1d10">
 
+<br><br><i>Må høre hva Robin har gjort her først</i><br><br>
+
+## CATEGORY WEB:
+
+Bravo Dashboard 1
+-----------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/0aeb4b6c-4dd9-435a-9329-deba747346ee)
+
+<br><br> Vi gikk inn på nettsiden `http://chall.ctf.kcsc-dev.com:26344/`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/e4e31dd5-5f0e-4de2-88e2-ae834b06d780)
+
+<br><br>Her finner vi en generell melding om at det er gjemt noe på siden.<br>
+Vi prøver som vanlig å bruke `inspiser element` i Chrome for å se på kildekoden til nettstedet.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1a7bd3d3-6d4b-44ab-b10c-8fb09982e536)
+
+<br><br>Da finner vi flagget i body-en i HTML koden.<br><br>
+
+<i>KCSC{992df2c259d4353f90bd900b11e6eb01}</i><br><br>
+
+Bravo Dashboard 2
+-----------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/2152c74d-3896-4e5f-bb3e-7dcf0eb13343)
+
+<br><br> Vi gikk inn på nettsiden `http://chall.ctf.kcsc-dev.com:18041/`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/140f506c-2b6e-4648-9c7b-3f366ed3a8fb)
+
+<br><br>Vi gikk rett til `inspiser element` igjen.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1b744abe-4599-4e1a-8138-1df9e47fd046)
+
+<br><br>Her finner vi første del av flagget `KCSC{696d29e09`<br>
+Vi går videre til "Sources" for å få ta en titt på .js og .css filene<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/de7da557-0dbf-4d97-bf1a-12bf13bd5d60)
+
+<br><br> Her finner vi andre del av flagget som kommentar i `app.js`!<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/a078e8e6-b647-4243-b51c-7b64edc19fa8)
+
+<br><br>Siste del av flagget finner vi i bunnen av `style.css`.<br><br>
+<i>KCSC{696d29e0940a4957748fe3fc9efd22a3}</i><br><br>
+
+Bravo Dashboard 3
+-----------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/d0e6c25d-44de-4fd0-bb28-d03e6018be8c)
+
+<br><br>Vi gikk inn på nettsiden `http://chall.ctf.kcsc-dev.com:17019/`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/7274cb38-a20a-4277-906c-0b3c3ea86b7c)
+
+<br><br>Her ble vi møtt med login hvor vi skulle oppgi username og passord for å komme videre.<br>
+Nok en gang så prøver vi å `inspiser element`.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/b94d73a6-5c62-499b-9708-dbadfab8a9f6)
+
+<br><br>Vi prøvde å lete i `app.js` og fikk følgende kode.<br>
+Vi er usikker på om vi løste det på riktig måte, men vi endret koden `password != checkPass(password` til `password = checkPass(password`<br>
+Deretter lagret vi koden med `ctrl+s` og trykket på `login` på nettsiden uten å skrive inn username eller passord.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/bbd27008-cc4d-4b76-8220-74d12589b95d)
+
+<br><br>Her fikk vi et dikt og flagget vårt!<br><br>
+
+<i>KCSC{7f4995a8e73dd8ce8e9c6724bc81e270}</i><br><br>
+
+
 

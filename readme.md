@@ -2,7 +2,7 @@
 
 # CYBERWEEK 2023 X KONGSBERG CSC<br>CTF WRITE-UP 23.09.2023 @ USN VESTFOLD
 
-<i>Vi hadde en utrolig lærelik og givende opplevelse og stilte med laget vårt **$10^{-9}$**. Takk til **KCSC** og **VOLT** for et bra opplegg.</i><br><br>
+<i>Vi hadde en utrolig lærerik og givende opplevelse og stilte med laget vårt $`10^{-9}`$. Takk til **KCSC** og **VOLT** for et bra opplegg.</i><br><br>
 
 Write-up laget av `pilotgutt`.
 

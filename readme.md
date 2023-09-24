@@ -2,6 +2,17 @@
 
 <i>Vi hadde en utrolig lærelik og givende opplevelse og stilte med laget vårt **$10^{-9}$**. Takk til **KCSC** og **VOLT** for et bra opplegg.</i><br><br>
 
+## Intro
+
+Welcome to KCSC CTF
+------------------
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/c38754c5-7a66-4409-9bdd-0bcc70623c17)
+
+Alle flagg var i formatet: KCSC{flag}<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/6ab8a3d3-f6ca-482c-bf09-6519fa386382)
+<br><br><i>KCSC{s3mper_disc3re}</i><br><br>
+
 ## CATEGORY MISC:
 
 warm_welcome
@@ -192,6 +203,162 @@ Deretter lagret vi koden med `ctrl+s` og trykket på `login` på nettsiden uten 
 <br><br>Her fikk vi et dikt og flagget vårt!<br><br>
 
 <i>KCSC{7f4995a8e73dd8ce8e9c6724bc81e270}</i><br><br>
+
+## CATEGORY OSINT
+
+Suspicious base
+---------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/9043d717-ce02-4d74-a09b-6870260076e5)
+
+<br><br>Vi laster ned image_base.png<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/14883d74-06fd-4279-bba3-4d398d2a6f52)
+
+<br><br> Vi tester først ved å bruke Google Lens for å søke etter lignende bilder på nett<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1e38c1f2-006f-4b73-a072-8b9ed861ee96)
+
+<br><br>Da finner vi kjapt ut at dette er et flyfoto av **Area 51**<br><br>
+
+<i>KCSC{area51}</i><br><br>
+
+Criminal Paper
+--------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/64577c36-264e-4025-b3ea-f1383166da3c)
+
+<br><br>Her lastet vi ned `image.jpg`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/95787183-11f0-4898-977f-67eef45d735a)
+
+<br><br>Her var det et opprevet ark som inneholder tekst og noe som lignet på koordinater.<br>
+Teksten virker å være: `"Treasure is located here:"`<br>
+og vi hadde følgende tallverdier: `6062,`, `36.87`, `-1.30` og `0702`<br><br>
+
+Her har vi to valg.<br>
+`-1.306062,36.870702` eller `36.870702 -1.306062`
+Vi vet jo ikke hvilken av verdiene som er latitude og hvilken som er longitude.<br>
+Så vi prøver begge to.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/0726e431-487d-4fc9-827d-582fefdee9d8)
+
+<br><br> Dette var første koordinatene vi testet: `36.870702 -1.306062`<br>
+Dette er en lokasjon i Middelhavet mellom Spania og Afrika, noe som ikke virket logisk.<br>
+Vi prøvde deretter den andre koordinaten: `-1.306062,36.870702`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1d41d1e5-badb-47df-96d3-89da49103d1c)
+
+<br><br>Og da fikk vi en lokasjon i Nairobi og dette visste seg å være flagget.<br><br>
+
+<i>KCSC{nairobi}</i><br><br>
+
+Roundabout
+--------------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/fa865bbb-5d4d-42f9-931a-edbef54cd0c6)
+
+<br><br>Her lastet vi ned `image.png`<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/2c7cda34-60db-4030-a0c1-950ee9e604aa)
+
+<br><br>Dette virket ganske kjent, og vi fant raskt ut at dette måtte være Triumfbuen.<br>
+Siden konteksten i oppgaven er skrevet i engelsk så tenkte vi å benytte det engelske navnet `Arch of Triumph`.<br>
+Vi prøvde ordet "arch" og klarte flagget.
+
+<br><br><i>KCSC{arch}</i><br><br>
+
+##CATEGORY YARA 
+
+Level 1
+----------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/89bde60a-3344-4e14-aae0-6729a786f4b3)
+
+<br><br>Her får vi lenke til både Yara Rule Editor (http://chall.ctf.kcsc-dev.com/) og dokumentasjonen (https://yara.readthedocs.io/en/v3.4.0/writingrules.html)<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/f2d2fb05-4e9c-402c-99a2-cec1d23cd383)
+
+<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/389665ee-c7c4-4960-97f0-668cf2e1e237)
+
+<br><br>Vi plotter inn koden vi har fått i oppgaven:<br>
+
+```yara
+rule level1 {
+    strings:
+        $string = "Serendipity dances with cosmic rhythm"
+        
+    condition:
+        $string
+}
+```
+
+<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/1186e68f-b13a-49c0-bb46-1f15b0e65a51)
+
+<br><br><i>KCSC{e4d909c290d0fb1ca068ffaddf22cbd0}</i><br><br>
+
+Level 2
+----------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/fa35fccc-f830-46c1-bc4a-01451161467c)
+
+<br><br>Vi sjekket i dokumentasjonen for å finne ut hvordan vi kan bruke boolske variabler og hvordan syntaxen fungerer i Yara.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/eb2e53b6-1d23-41e9-a213-c4a87a55e53e)
+
+<br><br>Vi døpte stringene til `$a` og `$b`<br>
+også brukte vi and-operatøren som visst i dokumentasjonen ovenfor.<br>
+Vi endret også `Level` til verdi `Two` i rullegardinmenyen på toppen av siden.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/75e2e081-fd70-4e9d-9b07-0096f4cef431)
+
+<br><br><i>KCSC{9d5ed678fe57bcca610140957afab571}</i><br><br>
+
+Level 3
+---------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/2caade1e-64ce-4694-9174-c258fe48e568)
+
+<br><br>Vi la til en ny variabel `$c` og AND-et dette med en NOT-ing av variabelen `$c`.<br>Samtidig endret vi `Level` til `Three` i menyen<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/9623f7c4-e2dd-4d1c-aab8-1968a33786f4)
+
+<br><br><i>KCSC{15c2a20e29edc8ce4a4c39b8a93b0763}</i><br><br>
+
+Level 4
+---------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/d5d6ac57-d596-4b1d-88d6-301874bca43f)
+
+<br><br>Vi tok en titt på dokumentasjonen til Yara igjen for å finne ut hva syntaxen var for å opprette en variabel i hexadecimal form.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/8ff8810a-9b9c-427a-abb3-517d07aeec49)
+
+<br><br>Endret `Level` til `Four`<br>Lagde en variabel `$a` og tildelte denne verdien `3963 6a57 4827 3921 3750`<br>
+Condition blir bare: `$a`.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/9e148498-6e2d-4240-a90e-89920323d538)
+
+<br><br><i>KCSC{75bc0408f075ce0051ebd36270b1e3df}</i><br><br>
+
+Level 5
+---------
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/27a17395-9b63-499d-9c3b-85e0d1bcf96e)
+
+<br><br> Tilbake til dokumentasjonen for å finne ut hvordan vi lager en case-insensitive variabel<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/06222785-0ad5-48c3-a1a2-47cf3d9f5a55)
+
+<br><br>Da bruker vi `nocase` etter definasjon av stringen<br>Endrer `Level` til `Five`.<br><br>
+
+![image](https://github.com/pilotgutt/KSCS2023CTF-writeup/assets/142602928/8e58d85c-8405-43c0-b465-02cbe1e0bab9)
+
+<br><br><i>KCSC{a64d8c2a8f639e60f4c68298ef93861d}</i><br><br>
 
 
 
